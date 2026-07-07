@@ -1,0 +1,11 @@
+.MuiDataGrid-root {
+  border: none !important;
+}
+
+.MuiDataGrid-columnHeaders {
+  background-color: #f5f7fa;
+}
+
+.MuiDataGrid-cell {
+  align-items: center;
+}

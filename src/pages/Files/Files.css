@@ -1,0 +1,30 @@
+.files-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.files-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.files-subtitle {
+  color: #757575;
+  margin-top: 5px;
+}
+
+.search-section {
+  padding: 20px;
+}
+
+.table-section {
+  padding: 20px;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}

@@ -1,0 +1,123 @@
+.dashboard-header{
+
+    margin-bottom:30px;
+
+}
+
+.dashboard-title{
+
+    font-weight:700 !important;
+
+    color:#1F2937;
+
+}
+
+.dashboard-subtitle{
+
+    color:#6B7280;
+
+    margin-top:5px !important;
+
+}
+
+
+
+.dashboard-card{
+
+    border-radius:15px !important;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.12) !important;
+
+}
+
+.card-icon{
+
+    font-size:45px !important;
+
+    color:#2563EB;
+
+    margin-bottom:15px;
+
+}
+
+.card-title{
+
+    color:#6B7280;
+
+    margin-bottom:10px !important;
+
+}
+
+.card-desc{
+
+    color:#9CA3AF;
+
+    font-size:13px !important;
+
+}
+
+
+
+.dashboard-section{
+
+    margin-top:30px;
+
+    padding:25px;
+
+    border-radius:15px !important;
+
+}
+
+.activity-list{
+
+    margin-top:15px;
+
+    padding-left:20px;
+
+}
+
+.activity-list li{
+
+    margin-bottom:10px;
+
+    color:#374151;
+
+}
+
+.overview-text{
+
+    margin-top:15px !important;
+
+    color:#4B5563;
+
+    line-height:1.8;
+
+}
+
+
+
+@media(max-width:768px){
+
+.dashboard-title{
+
+    font-size:28px !important;
+
+}
+
+.dashboard-section{
+
+    padding:18px;
+
+}
+
+}

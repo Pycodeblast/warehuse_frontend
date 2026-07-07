@@ -1,0 +1,42 @@
+.products-page {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.products-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.products-subtitle {
+    color: #6B7280;
+    margin-top: 5px !important;
+}
+
+.search-section {
+    padding: 20px;
+    border-radius: 12px !important;
+}
+
+.table-section {
+    padding: 20px;
+    border-radius: 12px !important;
+}
+
+.search-section{
+    padding:20px;
+}
+
+.table-section{
+    padding:25px;
+    min-height:400px;
+}
+
+.loader{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:300px;
+}

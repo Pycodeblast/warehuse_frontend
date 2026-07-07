@@ -1,0 +1,15 @@
+.MuiDataGrid-root {
+  border-radius: 12px;
+}
+
+.MuiDataGrid-columnHeaders {
+  background-color: #f3f4f6;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+  font-weight: 600;
+}
+
+.MuiDataGrid-cell {
+  font-size: 14px;
+}

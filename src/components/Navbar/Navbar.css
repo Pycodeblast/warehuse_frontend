@@ -1,0 +1,41 @@
+.navbar {
+  background: #ffffff !important;
+  color: #1f2937 !important;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navbar-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-title {
+  font-weight: 600 !important;
+  color: #111827;
+}
+
+.navbar-subtitle {
+  color: #6b7280;
+  font-size: 13px !important;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.user-info {
+  text-align: right;
+}
+
+.user-name {
+  font-weight: 600 !important;
+  color: #111827;
+}
+
+.user-role {
+  font-size: 12px !important;
+  color: #6b7280;
+}

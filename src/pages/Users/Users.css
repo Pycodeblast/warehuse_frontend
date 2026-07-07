@@ -1,0 +1,34 @@
+.users-page{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
+
+.users-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.users-subtitle{
+    color:#6B7280;
+    margin-top:5px !important;
+}
+
+.search-section{
+    padding:20px;
+    border-radius:12px !important;
+}
+
+.table-section{
+    padding:20px;
+    border-radius:12px !important;
+    min-height:500px;
+}
+
+.loader{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:350px;
+}
