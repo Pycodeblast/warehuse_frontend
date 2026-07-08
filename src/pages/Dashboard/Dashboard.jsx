@@ -13,7 +13,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import SmartToyIcon from "@mui/icons-material/SmartToy";
 import MainLayout from "../../layouts/MainLayout";
 import { useAuth } from "../../context/AuthContext";
-import { getDashboardStats, getRecentActivity } from "./dashboardService";
+import { getDashboardStats, getRecentActivity } from "./DashboardService";
 import "./Dashboard.css";
 import { useEffect, useState } from "react";
 
