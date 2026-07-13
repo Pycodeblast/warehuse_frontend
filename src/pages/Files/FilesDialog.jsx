@@ -20,7 +20,8 @@ function UploadFileDialog({
 
   onClose,
 
-  fetchProducts,
+  
+  fetchUploadedFiles,
 
   showSuccess,
 
@@ -86,10 +87,7 @@ function UploadFileDialog({
 
 
 
-      // Save uploaded filename
-      setUploadedFile(
-        response.filename
-      );
+     
 
 
 
@@ -104,7 +102,8 @@ function UploadFileDialog({
 
 
       // Refresh inventory table
-      fetchProducts();
+      
+      await fetchUploadedFiles();
 
 
 
@@ -121,6 +120,7 @@ function UploadFileDialog({
       showError(
         "Upload failed."
       );
+      console.log(error);
 
 
 

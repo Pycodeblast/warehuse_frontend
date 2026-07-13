@@ -26,6 +26,7 @@ import "./Files.css";
 import {
   getProducts,
   downloadFile,
+  getUploadedFiles,
 } from "./Files_service";
 
 
@@ -44,7 +45,8 @@ function Files() {
 
 
   // Store uploaded filename
-  const [uploadedFile, setUploadedFile] = useState(null);
+  
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
 
   const [snackbar, setSnackbar] = useState({
@@ -113,13 +115,24 @@ function Files() {
 
   };
 
+  const fetchUploadedFiles = async () => {
+  try {
+    const data = await getUploadedFiles();
+    setUploadedFiles(data);
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 
   useEffect(() => {
 
     fetchProducts();
+    fetchUploadedFiles();
 
   }, []);
+
+  
 
 
 
@@ -165,49 +178,14 @@ function Files() {
   // Download Uploaded Excel File
   //---------------------------------------
 
-  const handleDownload = async () => {
-
-
-    if(!uploadedFile){
-
-      showError(
-        "Please upload a file first."
-      );
-
-      return;
-
-    }
-
-
-
-    try {
-
-
-      await downloadFile(
-        uploadedFile
-      );
-
-
-      showSuccess(
-        "File downloaded successfully."
-      );
-
-
-    } catch(error){
-
-
-      console.error(error);
-
-
-      showError(
-        "Download failed."
-      );
-
-
-    }
-
-
-  };
+  const handleDownload = async (fileId) => {
+  try {
+    await downloadFile(fileId);
+  } catch (error) {
+    console.error(error);
+    showError("Download failed.");
+  }
+};
 
 
 
@@ -287,30 +265,7 @@ function Files() {
 
 
 
-            {
-              permission?.uploadFile && (
-
-                <Button
-
-                  variant="contained"
-
-                  color="success"
-
-                  startIcon={
-                    <DownloadIcon/>
-                  }
-
-                  onClick={handleDownload}
-
-                >
-
-                  Download
-
-                </Button>
-
-
-              )
-            }
+          
 
 
 
@@ -368,9 +323,9 @@ function Files() {
 
           <Typography sx={{mb:2}}>
 
-            Total Products :
+            Total Uploaded Files :
             {" "}
-            {filteredProducts.length}
+            {uploadedFiles.length}
 
 
           </Typography>
@@ -406,9 +361,8 @@ function Files() {
 
               <FileTable
 
-                products={
-                  filteredProducts
-                }
+                files={uploadedFiles}
+                onDownload={handleDownload}
 
               />
 
@@ -441,6 +395,8 @@ function Files() {
           fetchProducts={
             fetchProducts
           }
+          fetchUploadedFiles={fetchUploadedFiles}
+
 
 
           showSuccess={
@@ -453,9 +409,7 @@ function Files() {
           }
 
 
-          setUploadedFile={
-            setUploadedFile
-          }
+         
 
 
         />

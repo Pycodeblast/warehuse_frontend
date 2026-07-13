@@ -9,10 +9,12 @@ import {
   TableCell,
   TableContainer,
   TablePagination,
+  Button,
 } from "@mui/material";
 
-function FileTable({ products }) {
+import DownloadIcon from "@mui/icons-material/Download";
 
+function FileTable({ files, onDownload }) {
   const [page, setPage] = useState(0);
 
   const [rowsPerPage, setRowsPerPage] = useState(10);
@@ -28,97 +30,87 @@ function FileTable({ products }) {
 
   return (
     <Paper>
-
       <TableContainer>
-
         <Table>
-
           <TableHead>
-
             <TableRow>
+              <TableCell>File Name</TableCell>
 
-              <TableCell>
-                Product Name
-              </TableCell>
+              <TableCell>Uploaded By</TableCell>
 
-              <TableCell>
-                SKU
-              </TableCell>
+              <TableCell>Storage</TableCell>
+
+              <TableCell>Uploaded At</TableCell>
 
               <TableCell align="center">
-                Quantity
+                Action
               </TableCell>
-
-              <TableCell align="right">
-                Price
-              </TableCell>
-
             </TableRow>
-
           </TableHead>
 
           <TableBody>
-
-            {products
+            {files
               .slice(
                 page * rowsPerPage,
                 page * rowsPerPage + rowsPerPage
               )
-              .map((product) => (
-
-                <TableRow key={product.id} hover>
-
+              .map((file) => (
+                <TableRow key={file.id} hover>
                   <TableCell>
-                    {product.name}
+                    {file.original_name}
                   </TableCell>
 
                   <TableCell>
-                    {product.sku}
+                    {file.uploaded_by}
+                  </TableCell>
+
+                  <TableCell>
+                    {file.storage_type}
+                  </TableCell>
+
+                  <TableCell>
+                    {new Date(
+                      file.uploaded_at
+                    ).toLocaleString()}
                   </TableCell>
 
                   <TableCell align="center">
-                    {product.quantity}
+                    <Button
+                      variant="contained"
+                      color="success"
+                      size="small"
+                      startIcon={<DownloadIcon />}
+                      onClick={() => onDownload(file.id)}
+                    >
+                      Download
+                    </Button>
                   </TableCell>
-
-                  <TableCell align="right">
-                    ₹{product.price}
-                  </TableCell>
-
                 </TableRow>
-
               ))}
 
-            {products.length === 0 && (
-
+            {files.length === 0 && (
               <TableRow>
-
                 <TableCell
-                  colSpan={4}
+                  colSpan={5}
                   align="center"
                 >
-                  No Products Found
+                  No Uploaded Files Found
                 </TableCell>
-
               </TableRow>
-
             )}
-
           </TableBody>
-
         </Table>
-
       </TableContainer>
 
       <TablePagination
         component="div"
-        count={products.length}
+        count={files.length}
         page={page}
         onPageChange={handleChangePage}
         rowsPerPage={rowsPerPage}
         onRowsPerPageChange={handleRowsPerPageChange}
         rowsPerPageOptions={[5, 10, 25, 50]}
       />
-
     </Paper>
   );
 }

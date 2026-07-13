@@ -8,7 +8,10 @@ export const getProducts = async () => {
   const response = await api.get("/products");
   return response.data;
 };
-
+export const getUploadedFiles = async () => {
+  const response = await api.get("/files/");
+  return response.data;
+};
 /* -----------------------------
    UPLOAD EXCEL FILE
 ------------------------------ */
@@ -34,38 +37,16 @@ export const uploadFile = async (file) => {
    DOWNLOAD UPLOADED FILE
 ------------------------------ */
 
-export const downloadFile = async (filename) => {
-
-  const response = await api.get(
-    `/files/${filename}`,
-    {
-      responseType: "blob",
-    }
-  );
-
-
-  const url = window.URL.createObjectURL(
-    new Blob([response.data])
-  );
-
+export const downloadFile = async (fileId) => {
+  const response = await api.get(`/files/download/${fileId}`);
 
   const link = document.createElement("a");
-
-  link.href = url;
-
-  link.setAttribute(
-    "download",
-    filename
-  );
-
+  link.href = response.data.download_url;
+  link.download = "";
 
   document.body.appendChild(link);
-
   link.click();
-
-  link.remove();
-
-  window.URL.revokeObjectURL(url);
+  document.body.removeChild(link);
 };
 /* -----------------------------
    EXPORT PRODUCTS TO EXCEL
